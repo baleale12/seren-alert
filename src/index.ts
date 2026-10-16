@@ -29,8 +29,8 @@ a1lib.PasteInput.listen(img => {
 	output.insertAdjacentHTML("beforeend", `<div><b>${errid}</b>  ${err}</div>`);
 });
 
-// You can reach exports on window.TestApp because of
-// library:{type:"umd",name:"TestApp"} in webpack.config.ts
+// You can reach exports on window.SerenAlert because of
+// library:{type:"umd",name:"SerenAlert"} in webpack.config.ts
 export function capture() {
 	if (!window.alt1) {
 		output.insertAdjacentHTML("beforeend", `<div>You need to run this page in alt1 to capture the screen</div>`);
@@ -79,5 +79,5 @@ if (window.alt1) {
 //also the worst possible example of how to use global exposed exports as described in webpack.config.js
 output.insertAdjacentHTML("beforeend", `
 	<div>paste an image of rs with homeport button (or not)</div>
-	<div onclick='TestApp.capture()'>Click to capture if on alt1</div>`
+	<div onclick='SerenAlert.capture()'>Click to capture if on alt1</div>`
 );

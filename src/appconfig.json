@@ -1,6 +1,6 @@
 {
-	"appName": "example app",
-	"description": "minimal alt1 webpack/ts example test app",
+	"appName": "Seren Alert",
+	"description": "Seren Alert - an Alt1 app for RuneScape",
 	"appUrl": "./index.html",
 	"configUrl": "./appconfig.json",
 	"iconUrl": "./icon.png",

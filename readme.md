@@ -1,4 +1,6 @@
-# Minimal Alt1/webpack/typescript example
+# Seren Alert
+
+An Alt1 toolkit app for RuneScape. Built with webpack + TypeScript from the alt1minimal template.
 
 how to use
 ```sh

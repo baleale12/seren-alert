@@ -1,4 +1,5 @@
 {
+	"name": "seren-alert",
 	"scripts": {
 		"build": "webpack",
 		"watch": "webpack --watch"
