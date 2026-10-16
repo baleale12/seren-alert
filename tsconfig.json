@@ -5,5 +5,6 @@
 		"resolvePackageJsonExports": true,
 		"moduleResolution": "bundler",
 		"module": "ESNext",
+		"target": "ES2020",
 	}
 }

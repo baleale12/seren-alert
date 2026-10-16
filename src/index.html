@@ -1,10 +1,53 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf-8">
 		<title>Seren Alert</title>
+		<style>
+			body { margin: 0; padding: 8px; background: #1b2029; color: #d8dde6; font: 13px/1.4 Segoe UI, Arial, sans-serif; }
+			a { color: #8fc3ff; }
+			button { background: #2d3542; color: inherit; border: 1px solid #444f60; border-radius: 3px; padding: 3px 8px; cursor: pointer; }
+			button:hover { background: #3a4456; }
+			#status { color: #e0a85a; margin-bottom: 6px; }
+			#status.ok { color: #7fd47f; }
+			#alert { background: #4cd964; color: #1e1a10; font-weight: bold; font-size: 16px; text-align: center; padding: 6px; border-radius: 4px; margin-bottom: 6px; transition: background-color 0.5s; }
+			#alert-time { display: block; font-size: 28px; line-height: 1.1; }
+			#alert-bar { height: 8px; background: rgba(0, 0, 0, 0.3); border-radius: 4px; margin-top: 4px; overflow: hidden; }
+			#alert-fill { height: 100%; background: #fff; transition: width 1s linear; }
+			.row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-bottom: 6px; }
+			#stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; text-align: center; margin-bottom: 8px; }
+			#stats div { background: #232a35; border-radius: 3px; padding: 4px 2px; font-size: 11px; }
+			#stats b { display: block; font-size: 15px; color: #fff; }
+			h3 { font-size: 12px; text-transform: uppercase; color: #8a93a3; margin: 8px 0 4px; }
+			table { width: 100%; border-collapse: collapse; }
+			td { padding: 2px 4px; border-bottom: 1px solid #2a313d; }
+			.num { text-align: right; white-space: nowrap; }
+			.muted { color: #7a8392; }
+			ul { list-style: none; margin: 0; padding: 0; }
+			li { padding: 1px 0; }
+		</style>
 	</head>
 	<body>
-		<div id="output"></div>
+		<div id="status">Loading...</div>
+		<div id="alert" hidden>
+			Seren spirit!
+			<span id="alert-time"></span>
+			<div id="alert-bar"><div id="alert-fill"></div></div>
+		</div>
+		<div class="row">
+			<button onclick="SerenAlert.refind()">Re-find chat</button>
+			<button onclick="SerenAlert.alertSpawn()">Test alert</button>
+			<label><input type="checkbox" id="opt-sound" onchange="SerenAlert.toggleSetting('sound', this.checked)"> Sound</label>
+			<label><input type="checkbox" id="opt-overlay" onchange="SerenAlert.toggleSetting('overlay', this.checked)"> Overlay</label>
+		</div>
+		<div id="stats"></div>
+		<h3>Rewards</h3>
+		<table id="totals"></table>
+		<h3>Recent</h3>
+		<ul id="log"></ul>
+		<div class="row" style="margin-top: 10px">
+			<button onclick="SerenAlert.clearData()">Clear data</button>
+		</div>
 		<script src="./main.js"></script>
 	</body>
 </html>
