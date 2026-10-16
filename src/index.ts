@@ -231,7 +231,7 @@ function render() {
 		let price = priceOf(item);
 		let value = price == null ? null : price * t.qty;
 		totalValue += value || 0;
-		return { item, ...t, value };
+		return { item, ...t, price, value };
 	}).sort((a, b) => (b.value || 0) - (a.value || 0));
 
 	el("stats").innerHTML = `
@@ -240,10 +240,12 @@ function render() {
 		<div><b>${data.misses}</b> missed</div>
 		<div><b>${gp(totalValue)}</b> value</div>`;
 
-	el("totals").innerHTML = rows.length == 0 ? `<tr><td class="muted">No rewards yet</td></tr>` : rows.map(r => `
+	el("totals").innerHTML = rows.length == 0 ? `<tr><td class="muted">No rewards yet</td></tr>` : `
+		<tr class="muted"><td>Item</td><td class="num">Qty</td><td class="num">Each</td><td class="num">Total</td></tr>` + rows.map(r => `
 		<tr>
 			<td>${esc(r.item)}</td>
 			<td class="num">${r.qty.toLocaleString()}</td>
+			<td class="num muted">${r.price == null ? "-" : gp(r.price)}</td>
 			<td class="num">${r.value == null ? `<span class="muted">-</span>` : gp(r.value)}</td>
 		</tr>`).join("");
 
