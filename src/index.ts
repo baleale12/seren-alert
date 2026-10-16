@@ -64,7 +64,7 @@ function tick() {
 	if (!reader) { refind(); }
 	if (!reader.pos) {
 		reader.find();
-		if (!reader.pos) { setStatus("Can't find chatbox - make sure it's visible"); return; }
+		if (!reader.pos) { setStatus("Can't find chatbox - keep the whole chat window visible, including the line you type in"); return; }
 		setStatus("Tracking", true);
 	}
 	let lines = reader.read() || [];
