@@ -27,8 +27,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      # sharp is only used by alt1 under nodejs, not in the browser build, so skip its install script
-      - run: npm ci --ignore-scripts
+      # installs sharp too, which alt1/imagedata-loader needs to decode *.data.png at build time
+      - run: npm ci
       - run: npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
