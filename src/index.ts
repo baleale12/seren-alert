@@ -235,17 +235,16 @@ function render() {
 	}).sort((a, b) => (b.value || 0) - (a.value || 0));
 
 	el("stats").innerHTML = `
-		<div><b>${data.spawns}</b> spawns</div>
-		<div><b>${data.rewards.length}</b> caught</div>
-		<div><b>${data.misses}</b> missed</div>
-		<div><b>${gp(totalValue)}</b> value</div>`;
+		<div class="label">Spawns</div><div class="label">Caught</div><div class="label">Missed</div><div class="label">Value</div>
+		<div class="value">${data.spawns}</div><div class="value">${data.rewards.length}</div>
+		<div class="value">${data.misses}</div><div class="value">${gp(totalValue)}</div>`;
 
 	el("totals").innerHTML = rows.length == 0 ? `<tr><td class="muted">No rewards yet</td></tr>` : `
-		<tr class="muted"><td>Item</td><td class="num">Qty</td><td class="num">Each</td><td class="num">Total</td></tr>` + rows.map(r => `
+		<tr class="head"><td>Item</td><td class="num">Qty</td><td class="num">Each</td><td class="num">Total</td></tr>` + rows.map(r => `
 		<tr>
 			<td>${esc(r.item)}</td>
 			<td class="num">${r.qty.toLocaleString()}</td>
-			<td class="num muted">${r.price == null ? "-" : gp(r.price)}</td>
+			<td class="num">${r.price == null ? "-" : gp(r.price)}</td>
 			<td class="num">${r.value == null ? `<span class="muted">-</span>` : gp(r.value)}</td>
 		</tr>`).join("");
 
